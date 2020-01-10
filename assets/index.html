@@ -6,8 +6,17 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="app.js"></script>
 </head>
 <body>
     하이브리드앱 설정 완료
+    <button id="btn">알러트버트</button>
+<script>
+    document.getElementById('btn')
+    .addEventListener("click", init)
+    function init() {
+      app.init()
+    }
+</script>
 </body>
 </html>

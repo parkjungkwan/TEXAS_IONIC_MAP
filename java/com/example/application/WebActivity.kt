@@ -4,8 +4,10 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_web.*
 
 class WebActivity : AppCompatActivity() {
@@ -13,6 +15,8 @@ class WebActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
+        webview.settings.javaScriptEnabled = true
+        webview.addJavascriptInterface(WebBridge(),"java")
         webview.loadUrl("file:///android_asset/index.html")
         webview.setWebViewClient(object: WebViewClient(){
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
@@ -26,5 +30,11 @@ class WebActivity : AppCompatActivity() {
                 pg.visibility = View.INVISIBLE
             }
         })
+    }
+    class WebBridge{
+        @JavascriptInterface
+        fun test(){
+
+        }
     }
 }
